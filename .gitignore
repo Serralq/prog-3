@@ -1,0 +1,7 @@
+binary/*
+!binary/empty.txt
+.cache
+.direnv
+compile_commands.json
+*.org
+tests/*/test-case.txt

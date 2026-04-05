@@ -5,8 +5,34 @@
 
 ## Question 1
 
+Copied from timing.org which came from one of the test runs over the test/ folder
+
+| Test   |  K | lenA | lenB |      n*m | avg/run |
+|--------+----+------+------+----------+---------|
+| test1  |  4 |   25 |   25 |      625 | 4.6ms   |
+| test2  |  8 |   50 |   50 |     2500 | 4.0ms   |
+| test3  | 10 |  100 |  100 |    10000 | 3.8ms   |
+| test4  | 10 |  200 |  200 |    40000 | 4.6ms   |
+| test5  | 15 |  500 |  500 |   250000 | 6.6ms   |
+| test6  | 20 | 1000 | 1000 |  1000000 | 11.2ms  |
+| test7  | 20 | 2000 | 2000 |  4000000 | 32.4ms  |
+| test8  | 26 | 3000 | 3000 |  9000000 | 69.0ms  |
+| test9  | 26 | 4000 | 4000 | 16000000 | 124.2ms |
+| test10 | 26 | 5000 | 5000 | 25000000 | 191.0ms |
+
+Graph is found in graph.png, made from plotting inside of google-sheets.
+
 ## Question 2
 
+Let i be a pointer to the word A and j be a pointer to the word B.
+Let optimal of i,j be the highest value that can be achieved using subsections A[1..i] and B[1..j].
+
+- The base case would be to have an empty subsequence since that is always valid with a value of 0.
+- Then the next case would be to match or not match A[i] and B[j].
+- If they do not match then we get the max between skipping A[i] or B[j] by keeping i or j constant and then access the other variable - 1 -> dp[i][j - 1] or dp[i - 1][j]
+- If they do match then we do the previous check and do an additional max check against adding the current letter A[i]'s value to the previous subsection of both A and B thus it must be dp[i - 1][j - 1] + val(A[i]).
+
+This is correct since every subsequence of A[1..i] and B[1..j] can only get its value from either adding the matching value, skipping A[i] or skipping B[i] and we take the max from all these three cases. Given non-negative values this algo will only increase and surface the highest possible value.
 
 ## Question 3
 

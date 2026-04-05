@@ -43,4 +43,22 @@ int main() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(0);
 
+  int k;
+  std::cin >> k;
+
+  std::unordered_map<char, int> val;
+  while (k--) {
+    char c;
+    int v;
+    std::cin >> c >> v;
+    val[c] = v;
+  }
+
+  std::string A, B;
+  std::cin >> A >> B;
+
+  auto dp = dp_func(A, B, val);
+  std::string result = backtrack(dp, A, B, val);
+
+  std::cout << dp[A.size()][B.size()] << "\n" << result << "\n";
 }

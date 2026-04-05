@@ -36,8 +36,6 @@ This is correct since every subsequence of A[1..i] and B[1..j] can only get its 
 
 ## Question 3
 
-**Pseudocode:**
-
 ```
 LCS(A, B, v):
   n = A.len

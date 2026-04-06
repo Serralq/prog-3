@@ -31,6 +31,15 @@ Let optimal of i,j be the highest value that can be achieved using subsections A
 - Then the next case would be to match or not match A[i] and B[j].
 - If they do not match then we get the max between skipping A[i] or B[j] by keeping i or j constant and then access the other variable - 1 -> dp[i][j - 1] or dp[i - 1][j]
 - If they do match then we do the previous check and do an additional max check against adding the current letter A[i]'s value to the previous subsection of both A and B thus it must be dp[i - 1][j - 1] + val(A[i]).
+- Thus opt(i, j) = {
+
+    0 if i or j is 0
+
+    max { opt(i - 1, j - 1) + 1, opt(i - 1, j), opt(i, j - 1) } if A[i] == B[j]
+
+    max { opt(i - 1, j), opt(i, j - 1) } if A[i] != B[j]
+
+  }
 
 This is correct since every subsequence of A[1..i] and B[1..j] can only get its value from either adding the matching value, skipping A[i] or skipping B[i] and we take the max from all these three cases. Given non-negative values this algo will only increase and surface the highest possible value.
 
